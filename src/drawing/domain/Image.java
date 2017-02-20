@@ -4,6 +4,7 @@ import java.io.File;
 
 /**
  * Created by max1_ on 14/02/2017.
+ * An image to be displayed ont eh screen
  */
 public class Image extends DrawingItem {
 
@@ -12,12 +13,18 @@ public class Image extends DrawingItem {
     private double width;
     private double height;
 
+    public Image(File file, Point anchor, double width, double height) {
+        this.file = file;
+        this.anchor = anchor;
+        this.width = width;
+        this.height = height;
+    }
+
     public File getFile() {
         return file;
     }
 
     public void setFile(File file) {
-        setPreviousState();
         this.file = file;
     }
 
@@ -26,7 +33,6 @@ public class Image extends DrawingItem {
     }
 
     public void setAnchor(Point anchor) {
-        setPreviousState();
         this.anchor = anchor;
     }
 
@@ -35,7 +41,6 @@ public class Image extends DrawingItem {
     }
 
     public void setWidth(double width) {
-        setPreviousState();
         this.width = width;
     }
 
@@ -44,7 +49,6 @@ public class Image extends DrawingItem {
     }
 
     public void setHeight(double height) {
-        setPreviousState();
         this.height = height;
     }
 

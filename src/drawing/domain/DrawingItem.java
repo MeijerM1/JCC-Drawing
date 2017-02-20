@@ -1,9 +1,8 @@
 package drawing.domain;
 
-import sun.reflect.generics.reflectiveObjects.NotImplementedException;
-
 /**
  * Created by max1_ on 14/02/2017.
+ * Super class for drawable items
  */
 public abstract class DrawingItem {
 
@@ -28,8 +27,4 @@ public abstract class DrawingItem {
     public abstract double getWidth();
 
     public abstract double getHeight();
-
-    public void setPreviousState() {
-        previousState = this;
-    }
 }

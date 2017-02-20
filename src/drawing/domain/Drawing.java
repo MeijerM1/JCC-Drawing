@@ -1,9 +1,9 @@
 package drawing.domain;
-
 import java.util.ArrayList;
 
 /**
  * Created by max1_ on 14/02/2017.
+ * A collection of Drawable item to displayed on the screen
  */
 public class Drawing {
     private String name;
@@ -39,5 +39,11 @@ public class Drawing {
         return true;
     }
 
+    public int findItem(DrawingItem item) {
+        return items.indexOf(item);
+    }
 
+    public void editItem(DrawingItem newItem, int index) {
+        items.set(index, newItem);
+    }
 }

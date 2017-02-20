@@ -2,6 +2,7 @@ package drawing.domain;
 
 /**
  * Created by max1_ on 14/02/2017.
+ * An oval to draw on the screen
  */
 public class Oval extends DrawingItem {
 
@@ -10,12 +11,18 @@ public class Oval extends DrawingItem {
     private double height;
     private double weight;
 
+    public Oval(Point anchor, double width, double height, double weight) {
+        this.anchor = anchor;
+        this.width = width;
+        this.height = height;
+        this.weight = weight;
+    }
+
     public Point getAnchor() {
         return anchor;
     }
 
     public void setAnchor(Point anchor) {
-        setPreviousState();
         this.anchor = anchor;
     }
 
@@ -24,7 +31,6 @@ public class Oval extends DrawingItem {
     }
 
     public void setWidth(double width) {
-        setPreviousState();
         this.width = width;
     }
 
@@ -33,7 +39,6 @@ public class Oval extends DrawingItem {
     }
 
     public void setHeight(double height) {
-        setPreviousState();
         this.height = height;
     }
 
@@ -42,7 +47,6 @@ public class Oval extends DrawingItem {
     }
 
     public void setWeight(double weight) {
-        setPreviousState();
         this.weight = weight;
     }
 

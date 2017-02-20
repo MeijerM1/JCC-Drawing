@@ -4,18 +4,23 @@ import java.util.ArrayList;
 
 /**
  * Created by max1_ on 14/02/2017.
+ * A collection of points
  */
 public class Polygon extends DrawingItem {
 
     private ArrayList<Point> vertices;
     private double weight;
 
+    public Polygon(ArrayList<Point> vertices, double weight) {
+        this.vertices = vertices;
+        this.weight = weight;
+    }
+
     public ArrayList<Point> getVertices() {
         return vertices;
     }
 
     public void setVertices(ArrayList<Point> vertices) {
-        setPreviousState();
         this.vertices = vertices;
     }
 
@@ -24,7 +29,6 @@ public class Polygon extends DrawingItem {
     }
 
     public void setWeight(double weight) {
-        setPreviousState();
         this.weight = weight;
     }
 

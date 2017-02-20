@@ -2,6 +2,7 @@ package drawing.domain;
 
 /**
  * Created by max1_ on 14/02/2017.
+ * Text that will be drawn on the screen according to the size of the box surrounding it.
  */
 public class PaintedText extends DrawingItem {
 
@@ -11,12 +12,19 @@ public class PaintedText extends DrawingItem {
     private double width;
     private double height;
 
+    public PaintedText(String content, String fontName, Point anchor, double width, double height) {
+        this.content = content;
+        this.fontName = fontName;
+        this.anchor = anchor;
+        this.width = width;
+        this.height = height;
+    }
+
     public String getContent() {
         return content;
     }
 
     public void setContent(String content) {
-        setPreviousState();
         this.content = content;
     }
 
@@ -25,7 +33,6 @@ public class PaintedText extends DrawingItem {
     }
 
     public void setFontName(String fontName) {
-        setPreviousState();
         this.fontName = fontName;
     }
 
@@ -34,7 +41,6 @@ public class PaintedText extends DrawingItem {
     }
 
     public void setAnchor(Point anchor) {
-        setPreviousState();
         this.anchor = anchor;
     }
 
@@ -43,7 +49,6 @@ public class PaintedText extends DrawingItem {
     }
 
     public void setWidth(double width) {
-        setPreviousState();
         this.width = width;
     }
 
@@ -52,7 +57,6 @@ public class PaintedText extends DrawingItem {
     }
 
     public void setHeight(double height) {
-        setPreviousState();
         this.height = height;
     }
 
