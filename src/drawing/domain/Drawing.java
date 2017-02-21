@@ -46,4 +46,10 @@ public class Drawing {
     public void editItem(DrawingItem newItem, int index) {
         items.set(index, newItem);
     }
+
+    public void paintUsing (Paintable paintable) {
+        for (DrawingItem item : items) {
+            item.paintUsing(paintable);
+        }
+    }
 }

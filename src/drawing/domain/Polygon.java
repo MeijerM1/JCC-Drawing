@@ -16,6 +16,11 @@ public class Polygon extends DrawingItem {
         this.weight = weight;
     }
 
+    @Override
+    public void paintUsing(Paintable paintable) {
+        paintable.paint(this);
+    }
+
     public ArrayList<Point> getVertices() {
         return vertices;
     }

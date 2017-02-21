@@ -53,6 +53,11 @@ public class Image extends DrawingItem {
     }
 
     @Override
+    public void paintUsing(Paintable paintable) {
+        paintable.paint(this);
+    }
+
+    @Override
     public String toString() {
         return "Image{" +
                 "file=" + file +

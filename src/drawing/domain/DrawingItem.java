@@ -27,4 +27,7 @@ public abstract class DrawingItem {
     public abstract double getWidth();
 
     public abstract double getHeight();
+
+    public void paintUsing(Paintable paintable) {
+    }
 }

@@ -20,6 +20,11 @@ public class PaintedText extends DrawingItem {
         this.height = height;
     }
 
+    @Override
+    public void paintUsing(Paintable paintable) {
+        paintable.paint(this);
+    }
+
     public String getContent() {
         return content;
     }
