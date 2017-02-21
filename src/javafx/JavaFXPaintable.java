@@ -38,10 +38,10 @@ public class JavaFXPaintable implements Paintable {
         // Get all Y point
         double[] doublesY = new double[polygon.getVertices().size()];
         for (int i = 0; i < doublesY.length; i++) {
-            doublesX[i] = polygon.getVertices().get(i).getY();
+            doublesY[i] = polygon.getVertices().get(i).getY();
         }
 
-        gc.strokePolygon(doublesX, doublesY ,polygon.getVertices().size());
+        gc.strokePolygon(doublesX, doublesY ,(polygon.getVertices().size()));
     }
 
     @Override
