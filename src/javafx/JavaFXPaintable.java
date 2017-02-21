@@ -5,7 +5,9 @@ import drawing.domain.Image;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.*;
 
+import javax.imageio.ImageIO;
 import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
 
 /**
@@ -49,9 +51,16 @@ public class JavaFXPaintable implements Paintable {
 
     @Override
     public void paint(Image image) {
+        try {
+
         System.out.println("Painting image");
         System.out.println(image.getFile().getAbsoluteFile());
-        javafx.scene.image.Image img = new javafx.scene.image.Image(image.getFile().getAbsolutePath());
+        javafx.scene.image.Image img = new javafx.scene.image.Image(image.getFile().toURI().toString());
         gc.drawImage(img, image.getAnchor().getX(), image.getAnchor().getY(), image.getWidth(), image.getHeight());
+        }
+        catch(Exception e)
+        {
+            e.printStackTrace();
+        }
     }
 }
