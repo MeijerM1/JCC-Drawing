@@ -5,12 +5,8 @@ import javafx.application.Application;
 import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.scene.canvas.Canvas;
-import javafx.scene.image.Image;
 import javafx.stage.Stage;
-
-import javax.print.DocFlavor;
 import java.io.File;
-import java.net.MalformedURLException;
 import java.util.ArrayList;
 
 /**
@@ -48,7 +44,7 @@ public class Main extends Application {
         points.add(new Point(200, 100));
         points.add(new Point(300, 300));
         points.add(new Point(200, 350));
-        points.add(new Point(100, 400));
+        points.add(new Point(500, 400));
         drawing.addItem(new Polygon(points, 5));
 
         // New drawing tool to draw the entire drawing to the screen.
