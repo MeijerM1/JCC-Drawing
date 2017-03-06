@@ -28,7 +28,7 @@ public class Main extends Application {
         Drawing drawing = new Drawing();
 
         // Add items to draw on the screen.
-        drawing.addItem(new Oval(new Point(10.0, 10.0), 50.0, 50.0, 40.0));
+        drawing.addItem(new Oval(new Point(10.0, 10.0), 50.0, 50.0, 40.0, Color.BLUE));
 
         // Add an image to the screen
         try {

@@ -18,7 +18,7 @@ class DrawingTest {
         Drawing drawing = new Drawing();
 
         ArrayList<DrawingItem> items = new ArrayList<>();
-        items.add(new Oval(new Point(10, 10), 15, 20, 10));
+        items.add(new Oval(new Point(10, 10), 15, 20, 10, Color.BLUE));
         drawing.setItems(items);
 
         assertEquals(items, drawing.getItems());

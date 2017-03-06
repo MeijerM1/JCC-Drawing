@@ -2,6 +2,10 @@ package javafx;
 
 import drawing.domain.*;
 import javafx.scene.canvas.GraphicsContext;
+import javafx.scene.paint.*;
+import javafx.scene.paint.Color;
+import javafx.scene.shape.Circle;
+import javafx.scene.shape.Ellipse;
 
 
 /**
@@ -16,14 +20,32 @@ public class JavaFXPaintable implements Paintable {
         this.gc = gc;
     }
 
+    public Color getColor(DrawingItem dItem) {
+        switch (dItem.getColor()) {
+            case BLACK:
+                return Color.BLACK;
+            case BLUE:
+                return Color.BLUE;
+            case GREEN:
+                return Color.GREEN;
+            case RED:
+                return Color.RED;
+            case WHITE:
+                return Color.WHITE;
+        }
+        return Color.BLACK;
+    }
+
     @Override
     public void paint(Oval oval) {
+        gc.setStroke(getColor(oval));
         gc.strokeOval(oval.getAnchor().getX(), oval.getAnchor().getY(), oval.getWidth(), oval.getHeight());
     }
 
     @Override
     public void paint(Polygon polygon) {
         // Get all X point
+        gc.setStroke(getColor(polygon));
         double[] doublesX = new double[polygon.getVertices().size()];
         for (int i = 0; i < doublesX.length; i++) {
             doublesX[i] = polygon.getVertices().get(i).getX();
@@ -40,13 +62,14 @@ public class JavaFXPaintable implements Paintable {
 
     @Override
     public void paint(PaintedText text) {
+        gc.setStroke(getColor(text));
         gc.fillText(text.getContent(), text.getAnchor().getX(), text.getAnchor().getY(), text.getWidth());
     }
 
     @Override
     public void paint(Image image) {
         try {
-
+            gc.setStroke(getColor(image));
         System.out.println("Painting image");
         System.out.println(image.getFile().getAbsoluteFile());
         javafx.scene.image.Image img = new javafx.scene.image.Image(image.getFile().toURI().toString());

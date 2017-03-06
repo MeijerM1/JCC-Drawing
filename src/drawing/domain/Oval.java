@@ -11,11 +11,12 @@ public class Oval extends DrawingItem {
     private double height;
     private double weight;
 
-    public Oval(Point anchor, double width, double height, double weight) {
+    public Oval(Point anchor, double width, double height, double weight, Color color) {
         this.anchor = anchor;
         this.width = width;
         this.height = height;
         this.weight = weight;
+        this.setColor(color);
     }
 
     public Point getAnchor() {

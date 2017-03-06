@@ -18,6 +18,10 @@ public abstract class DrawingItem {
         this.color = color;
     }
 
+    public DrawingItem(){
+        color = Color.BLACK;
+    }
+
     public DrawingItem getPreviousState() {
         return previousState;
     }
