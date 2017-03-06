@@ -1,14 +1,8 @@
 package javafx;
 
 import drawing.domain.*;
-import drawing.domain.Image;
 import javafx.scene.canvas.GraphicsContext;
-import javafx.scene.image.*;
 
-import javax.imageio.ImageIO;
-import java.io.File;
-import java.io.IOException;
-import java.util.ArrayList;
 
 /**
  * Created by max1_ on 21/02/2017.

@@ -44,7 +44,7 @@ public class Main extends Application {
         points.add(new Point(200, 100));
         points.add(new Point(300, 300));
         points.add(new Point(200, 350));
-        points.add(new Point(100, 400));
+        points.add(new Point(500, 400));
         drawing.addItem(new Polygon(points, 5));
 
         PaintedText text = new PaintedText("Test Text", "Arial", new Point(500,400), 100, 100);
