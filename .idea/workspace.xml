@@ -2,26 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="963b6353-316f-4ccb-93a5-2adb6250f455" name="Default" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/JCC-Drawing/Main.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/JCC-Drawing/drawing/domain/DrawingTool.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/Main.java" afterPath="" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/drawing/domain/DrawingTool.java" afterPath="$PROJECT_DIR$/src/DrawingTool.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/JCC-Drawing/drawing/domain/Drawing.class" afterPath="$PROJECT_DIR$/out/production/JCC-Drawing/drawing/domain/Drawing.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/JCC-Drawing/drawing/domain/DrawingItem.class" afterPath="$PROJECT_DIR$/out/production/JCC-Drawing/drawing/domain/DrawingItem.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/JCC-Drawing/drawing/domain/Image.class" afterPath="$PROJECT_DIR$/out/production/JCC-Drawing/drawing/domain/Image.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/JCC-Drawing/drawing/domain/Oval.class" afterPath="$PROJECT_DIR$/out/production/JCC-Drawing/drawing/domain/Oval.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/JCC-Drawing/drawing/domain/PaintedText.class" afterPath="$PROJECT_DIR$/out/production/JCC-Drawing/drawing/domain/PaintedText.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/JCC-Drawing/drawing/domain/Point.class" afterPath="$PROJECT_DIR$/out/production/JCC-Drawing/drawing/domain/Point.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/JCC-Drawing/drawing/domain/Polygon.class" afterPath="$PROJECT_DIR$/out/production/JCC-Drawing/drawing/domain/Polygon.class" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/mysql-connector-java-5.1.41-bin.jar" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/persistence/DatabaseMediator.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/persistence/PersistencyMediator.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/persistence/SerializationMediator.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/JCC-Drawing.iml" afterPath="$PROJECT_DIR$/JCC-Drawing.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/drawing/domain/Drawing.java" afterPath="$PROJECT_DIR$/src/drawing/domain/Drawing.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/drawing/domain/DrawingItem.java" afterPath="$PROJECT_DIR$/src/drawing/domain/DrawingItem.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/drawing/domain/Image.java" afterPath="$PROJECT_DIR$/src/drawing/domain/Image.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/drawing/domain/Oval.java" afterPath="$PROJECT_DIR$/src/drawing/domain/Oval.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/drawing/domain/PaintedText.java" afterPath="$PROJECT_DIR$/src/drawing/domain/PaintedText.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/drawing/domain/Point.java" afterPath="$PROJECT_DIR$/src/drawing/domain/Point.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/drawing/domain/Polygon.java" afterPath="$PROJECT_DIR$/src/drawing/domain/Polygon.java" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -71,8 +56,8 @@
       <file leaf-file-name="DatabaseMediator.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/persistence/DatabaseMediator.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="85">
-              <caret line="26" column="19" lean-forward="true" selection-start-line="26" selection-start-column="19" selection-end-line="27" selection-end-column="39" />
+            <state relative-caret-position="238">
+              <caret line="35" column="36" lean-forward="true" selection-start-line="35" selection-start-column="36" selection-end-line="35" selection-end-column="36" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <marker date="1488887468366" expanded="true" signature="540:579" ph="INSERT INTO drawing... " />
@@ -106,12 +91,12 @@
       <file leaf-file-name="SerializationMediator.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/persistence/SerializationMediator.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="116">
-              <caret line="46" column="36" lean-forward="false" selection-start-line="46" selection-start-column="36" selection-end-line="46" selection-end-column="66" />
+            <state relative-caret-position="153">
+              <caret line="9" column="39" lean-forward="true" selection-start-line="9" selection-start-column="39" selection-end-line="9" selection-end-column="39" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#2200#2201#0" expanded="true" />
-                <element signature="e#2228#2229#0" expanded="true" />
+                <element signature="e#2199#2200#0" expanded="true" />
+                <element signature="e#2227#2228#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -204,9 +189,9 @@
         <option value="$PROJECT_DIR$/src/drawing/domain/Polygon.java" />
         <option value="$PROJECT_DIR$/src/drawing/domain/DrawingTool.java" />
         <option value="$PROJECT_DIR$/src/Main.java" />
-        <option value="$PROJECT_DIR$/src/persistence/SerializationMediator.java" />
         <option value="$PROJECT_DIR$/src/DrawingTool.java" />
         <option value="$PROJECT_DIR$/src/persistence/DatabaseMediator.java" />
+        <option value="$PROJECT_DIR$/src/persistence/SerializationMediator.java" />
       </list>
     </option>
   </component>
@@ -863,7 +848,7 @@
       <workItem from="1488786535004" duration="13000" />
       <workItem from="1488824526602" duration="306000" />
       <workItem from="1488824861461" duration="1998000" />
-      <workItem from="1488872393943" duration="11425000" />
+      <workItem from="1488872393943" duration="11561000" />
     </task>
     <task id="LOCAL-00001" summary="Added color functionality">
       <created>1488826665847</created>
@@ -872,7 +857,14 @@
       <option name="project" value="LOCAL" />
       <updated>1488826665847</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="Started implementing load and save via serialise and db">
+      <created>1488887521895</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1488887521895</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TestHistory">
@@ -893,7 +885,7 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="18642000" />
+    <option name="totallyTimeSpent" value="18778000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -981,7 +973,8 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Added color functionality" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added color functionality" />
+    <MESSAGE value="Started implementing load and save via serialise and db" />
+    <option name="LAST_COMMIT_MESSAGE" value="Started implementing load and save via serialise and db" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -1463,28 +1456,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/persistence/PersistencyMediator.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="187">
-          <caret line="11" column="38" lean-forward="false" selection-start-line="11" selection-start-column="38" selection-end-line="11" selection-end-column="38" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/persistence/SerializationMediator.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="116">
-          <caret line="46" column="36" lean-forward="false" selection-start-line="46" selection-start-column="36" selection-end-line="46" selection-end-column="66" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#2200#2201#0" expanded="true" />
-            <element signature="e#2228#2229#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/.gitignore">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="204">
@@ -1513,10 +1484,32 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/persistence/SerializationMediator.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="153">
+          <caret line="9" column="39" lean-forward="true" selection-start-line="9" selection-start-column="39" selection-end-line="9" selection-end-column="39" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#2199#2200#0" expanded="true" />
+            <element signature="e#2227#2228#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/persistence/PersistencyMediator.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="187">
+          <caret line="11" column="38" lean-forward="false" selection-start-line="11" selection-start-column="38" selection-end-line="11" selection-end-column="38" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/persistence/DatabaseMediator.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
-          <caret line="26" column="19" lean-forward="true" selection-start-line="26" selection-start-column="19" selection-end-line="27" selection-end-column="39" />
+        <state relative-caret-position="238">
+          <caret line="35" column="36" lean-forward="true" selection-start-line="35" selection-start-column="36" selection-end-line="35" selection-end-column="36" />
           <folding>
             <element signature="imports" expanded="true" />
             <marker date="1488887468366" expanded="true" signature="540:579" ph="INSERT INTO drawing... " />
