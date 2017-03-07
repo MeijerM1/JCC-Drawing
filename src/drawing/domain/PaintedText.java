@@ -1,10 +1,12 @@
 package drawing.domain;
 
+import java.io.Serializable;
+
 /**
  * Created by max1_ on 14/02/2017.
  * Text that will be drawn on the screen according to the size of the box surrounding it.
  */
-public class PaintedText extends DrawingItem {
+public class PaintedText extends DrawingItem implements Serializable {
 
     private String content;
     private String fontName;

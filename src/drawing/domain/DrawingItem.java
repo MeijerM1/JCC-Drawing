@@ -1,10 +1,12 @@
 package drawing.domain;
 
+import java.io.Serializable;
+
 /**
  * Created by max1_ on 14/02/2017.
  * Super class for drawable items
  */
-public abstract class DrawingItem {
+public abstract class DrawingItem implements Serializable {
 
     private Color color;
     private DrawingItem previousState;

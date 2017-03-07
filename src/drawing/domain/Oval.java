@@ -1,10 +1,12 @@
 package drawing.domain;
 
+import java.io.Serializable;
+
 /**
  * Created by max1_ on 14/02/2017.
  * An oval to draw on the screen
  */
-public class Oval extends DrawingItem {
+public class Oval extends DrawingItem implements Serializable {
 
     private Point anchor;
     private double width;

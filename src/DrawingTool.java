@@ -1,33 +1,64 @@
 import drawing.domain.*;
-
 import javafx.JavaFXPaintable;
 import javafx.application.Application;
 import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.scene.canvas.Canvas;
+import javafx.scene.canvas.GraphicsContext;
 import javafx.stage.Stage;
+import persistence.DatabaseMediator;
+import persistence.SerializationMediator;
+
 import java.io.File;
 import java.util.ArrayList;
 
 /**
  * Created by max1_ on 21/02/2017.
- *
+ * Tool that does actual drawing
  */
-public class Main extends Application {
+public class DrawingTool extends javafx.application.Application  {
+
+    private Drawing drawing;
+
+    public void setPaintable(Paintable paintable) {
+        this.paintable = paintable;
+    }
+
+    private Paintable paintable;
+    SerializationMediator sm = new SerializationMediator();
+    DatabaseMediator dm = new DatabaseMediator();
+
+    public DrawingTool() {
+        // Empty constructor for application launch.
+    }
+
+    public void Draw() {
+        drawing.paintUsing(paintable);
+    }
+
+    public Drawing getDrawing() {
+        return drawing;
+    }
+
+    public void setDrawing(Drawing drawing) {
+        this.drawing = drawing;
+    }
 
     public static void main(String[] args) {
         Application.launch(args);
     }
 
     @Override
-    public void start(Stage primaryStage) throws Exception{
+    public void start(Stage primaryStage) throws Exception {
         primaryStage.setTitle("Drawing Operations Test");
         Group root = new Group();
 
         Canvas canvas = new Canvas(700, 500);
         Drawing drawing = new Drawing();
 
-        // Add items to draw on the screen.
+        // Add items to draw on the screen below.
+
+        // Add an ellipse
         drawing.addItem(new Oval(new Point(10.0, 10.0), 50.0, 50.0, 40.0, Color.BLUE));
 
         // Add an image to the screen
@@ -50,12 +81,21 @@ public class Main extends Application {
         PaintedText text = new PaintedText("Test Text", "Arial", new Point(500,400), 100, 100);
         drawing.addItem(text);
 
-        // New drawing tool to draw the entire drawing to the screen.
-        DrawingTool dt = new DrawingTool(drawing, new JavaFXPaintable(canvas.getGraphicsContext2D()));
-        dt.Draw();
+        drawing.setName("D01");
+        // Load a drawing
+        //drawing = sm.load("D01");
+
+        // New drawing tool to draw the entire drawing to the screen
+        this.setPaintable(new JavaFXPaintable(canvas.getGraphicsContext2D()));
+        this.setDrawing(drawing);
+        this.Draw();
 
         root.getChildren().add(canvas);
         primaryStage.setScene(new Scene(root));
         primaryStage.show();
+
+        // Save the object
+        sm.save(drawing);
+        dm.save(drawing);
     }
 }

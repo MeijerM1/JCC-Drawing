@@ -1,11 +1,12 @@
 package drawing.domain;
+import java.io.Serializable;
 import java.util.ArrayList;
 
 /**
  * Created by max1_ on 14/02/2017.
  * A collection of Drawable item to displayed on the screen
  */
-public class Drawing {
+public class Drawing implements Serializable {
     private String name;
     private ArrayList<DrawingItem> items;
 

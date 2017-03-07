@@ -1,12 +1,13 @@
 package drawing.domain;
 
 import java.io.File;
+import java.io.Serializable;
 
 /**
  * Created by max1_ on 14/02/2017.
  * An image to be displayed ont eh screen
  */
-public class Image extends DrawingItem {
+public class Image extends DrawingItem implements Serializable {
 
     private File file;
     private Point anchor;

@@ -1,12 +1,13 @@
 package drawing.domain;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 /**
  * Created by max1_ on 14/02/2017.
  * A collection of points
  */
-public class Polygon extends DrawingItem {
+public class Polygon extends DrawingItem implements Serializable {
 
     private ArrayList<Point> vertices;
     private double weight;
