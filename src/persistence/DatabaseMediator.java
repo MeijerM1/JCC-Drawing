@@ -1,6 +1,10 @@
 package persistence;
 
 import drawing.domain.Drawing;
+
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.ObjectInputStream;
 import java.sql.*;
 import java.util.Properties;
 
@@ -14,17 +18,37 @@ public class DatabaseMediator implements PersistencyMediator {
     private Connection con;
 
     @Override
-    public Drawing load(String nameDrawing) {
+    public Drawing load(String nameDrawing) throws SQLException, IOException, ClassNotFoundException {
+        init(props);
+        ResultSet myRs;
+        Statement myStmt;
+        myStmt = con.createStatement();
+        InputStream input = null;
+
+        String sql = "select Drawing from drawing where ID=2";
+        myRs = myStmt.executeQuery(sql);
+
+        // 3. Set up a handle to the file
+        if (myRs.next()) {
+
+            input = myRs.getBinaryStream("Drawing");
+            System.out.println("Reading drawing from database...");
+            System.out.println(sql);
+
+            ObjectInputStream in = new ObjectInputStream(input);
+            Drawing drawing = (Drawing) in.readObject();
+
+            System.out.println("\nCompleted successfully!");
+            return drawing;
+        }
         return null;
-        // TODO
     }
 
     @Override
     public boolean save(Drawing drawing) throws SQLException {
         String SQL_SERIALIZE_OBJECT = "INSERT INTO drawing(Drawing) VALUES (?)";
 
-        Properties prop = new Properties();
-        init(prop);
+        init(props);
         PreparedStatement pstmt = null;
         try {
             pstmt = con.prepareStatement(SQL_SERIALIZE_OBJECT);
