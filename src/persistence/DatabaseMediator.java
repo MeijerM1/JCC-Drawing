@@ -28,7 +28,6 @@ public class DatabaseMediator implements PersistencyMediator {
         String sql = "select Drawing from drawing where ID=2";
         myRs = myStmt.executeQuery(sql);
 
-        // 3. Set up a handle to the file
         if (myRs.next()) {
 
             input = myRs.getBinaryStream("Drawing");
@@ -56,7 +55,6 @@ public class DatabaseMediator implements PersistencyMediator {
             e.printStackTrace();
         }
 
-        // just setting the class name
         pstmt.setObject(1, drawing);
         pstmt.executeUpdate();
 

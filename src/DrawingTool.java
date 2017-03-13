@@ -5,15 +5,9 @@ import javafx.application.Application;
 import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.scene.canvas.Canvas;
-import javafx.scene.canvas.GraphicsContext;
 import javafx.stage.Stage;
 import persistence.DatabaseMediator;
 import persistence.SerializationMediator;
-
-import java.io.File;
-import java.net.ConnectException;
-import java.net.UnknownHostException;
-import java.util.ArrayList;
 
 /**
  * Created by max1_ on 21/02/2017.
