@@ -17,7 +17,7 @@ public class SerializationMediator implements PersistencyMediator {
     public Drawing load(String nameDrawing) {
 
         Drawing drawing;
-        System.out.println("Loading file at" + System.getProperty("user.dir") + "\\saves\\drawing.ser");
+        System.out.println("Loading file at" + System.getProperty("user.dir") + "\\saves\\D01.ser");
         try {
             FileInputStream fileIn = new FileInputStream(System.getProperty("user.dir") + "\\saves\\" + nameDrawing + ".ser");
             ObjectInputStream in = new ObjectInputStream(fileIn);

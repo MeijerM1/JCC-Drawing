@@ -1,10 +1,8 @@
-import com.mysql.jdbc.CommunicationsException;
 import drawing.domain.*;
-import javafx.JavaFXPaintable;
 import javafx.application.Application;
-import javafx.scene.Group;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.canvas.Canvas;
 import javafx.stage.Stage;
 import persistence.DatabaseMediator;
 import persistence.SerializationMediator;
@@ -47,10 +45,11 @@ public class DrawingTool extends javafx.application.Application  {
 
     @Override
     public void start(Stage primaryStage) throws Exception {
-        primaryStage.setTitle("Drawing Operations Test");
-        Group root = new Group();
 
-        Canvas canvas = new Canvas(700, 500);
+        Parent root = FXMLLoader.load(getClass().getResource("GUI/form.fxml"));
+        primaryStage.setTitle("JCC-drawing app");
+        primaryStage.setScene(new Scene(root, 1000, 700));
+        primaryStage.show();
         Drawing drawing = new Drawing();
 
         // Add items to draw on the screen below.
@@ -77,28 +76,6 @@ public class DrawingTool extends javafx.application.Application  {
 //
 //        PaintedText text = new PaintedText("Test Text", "Arial", new Point(500,400), 100, 100);
 //        drawing.addItem(text);
-
-        drawing.setName("D01");
-        // Load a drawing
-        //drawing = sm.load("D01");
-        drawing = dm.load("");
-
-        // New drawing tool to draw the entire drawing to the screen
-        this.setPaintable(new JavaFXPaintable(canvas.getGraphicsContext2D()));
-        this.setDrawing(drawing);
-        this.Draw();
-
-        root.getChildren().add(canvas);
-        primaryStage.setScene(new Scene(root));
-        primaryStage.show();
-
-        // Save the object
-        //sm.save(drawing);
-        try {
-            dm.save(drawing);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
 
     }
 }

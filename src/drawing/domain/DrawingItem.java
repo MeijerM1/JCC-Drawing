@@ -34,6 +34,5 @@ public abstract class DrawingItem implements Serializable {
 
     public abstract double getHeight();
 
-    public void paintUsing(Paintable paintable) {
-    }
+    public abstract void paintUsing(Paintable paintable);
 }

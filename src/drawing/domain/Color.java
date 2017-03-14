@@ -9,5 +9,16 @@ public enum Color {
     WHITE,
     RED,
     BLUE,
-    GREEN
+    GREEN;
+
+    public static String[] names() {
+        Color[] colors = values();
+        String[] names = new String[colors.length];
+
+        for (int i = 0; i < colors.length; i++) {
+            names[i] = colors[i].name();
+        }
+
+        return names;
+    }
 }
