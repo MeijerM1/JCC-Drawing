@@ -1,10 +1,12 @@
 package drawing.domain;
 
+import java.io.Serializable;
+
 /**
  * Created by max1_ on 14/02/2017.
  * A single point represented by an X, Y coordinate
  */
-public class Point {
+public class Point implements Serializable {
 
     private double x;
 
