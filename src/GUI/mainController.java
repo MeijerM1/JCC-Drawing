@@ -14,7 +14,6 @@ import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.control.*;
 import javafx.scene.input.MouseEvent;
-import javafx.scene.paint.*;
 import javafx.scene.shape.Rectangle;
 
 import java.net.URL;
@@ -66,6 +65,8 @@ public class mainController implements Initializable {
             @Override
             public void handle(MouseEvent event) {
                 System.out.println(String.format("Mouse dragged at %f, %f", event.getX(), event.getY()));
+                draw();
+                drawTempShape(startPoint, (event.getX() - startPoint.getX()), (event.getY() - startPoint.getY()));
             }
         });
         drawingCanvas.addEventHandler(MouseEvent.MOUSE_RELEASED,new EventHandler<MouseEvent>(){
@@ -82,14 +83,12 @@ public class mainController implements Initializable {
         });
 
         drawingItemsListView.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<DrawingItem>() {
-
             @Override
             public void changed(ObservableValue<? extends DrawingItem> observable, DrawingItem oldValue, DrawingItem newValue) {
                 System.out.println("Item selected: " + newValue);
                 drawBoundingBox(newValue);
             }
         });
-
     }
 
     public void showError(String message) {
@@ -105,6 +104,7 @@ public class mainController implements Initializable {
             switch ((String) shapeCb.getValue()) {
                 case "Oval":
                     Oval oval = new Oval(point, width, height, 100, Color.valueOf((String) colorCb.getValue()));
+                    if(checkOverlap(oval)) { showError("Overlap detected, aborting"); draw(); return; };
                     drawing.addItem(oval);
                     break;
                 case "Text":
@@ -139,14 +139,59 @@ public class mainController implements Initializable {
           drawing.removeItem(drawingItemsListView.getSelectionModel().getSelectedItem());
           draw();
         }
-
     }
 
     private void drawBoundingBox(DrawingItem item) {
         draw();
         Rectangle rect = item.getBoundingBox();
-
         gc.setStroke(javafx.scene.paint.Color.BLACK);
         gc.strokeRect(rect.getX(), rect.getY(), rect.getWidth(), rect.getHeight());
+    }
+
+    private void drawTempShape(Point point, double width, double height) {
+
+        switch ((String) shapeCb.getValue()) {
+            case "Oval":
+                gc.setStroke(getColor(Color.valueOf((String) colorCb.getValue())));
+                gc.strokeOval(point.getX(), point.getY(), width, height);
+                break;
+            case "Text":
+                //TODO
+                break;
+            case "Image":
+                //TODO
+                break;
+            case "Polygon":
+                //TODO
+                break;
+            default:
+                return;
+        }
+    }
+
+    public javafx.scene.paint.Color getColor(Color color) {
+        switch (color) {
+            case BLACK:
+                return javafx.scene.paint.Color.BLACK;
+            case BLUE:
+                return javafx.scene.paint.Color.BLUE;
+            case GREEN:
+                return javafx.scene.paint.Color.GREEN;
+            case RED:
+                return javafx.scene.paint.Color.RED;
+            case WHITE:
+                return javafx.scene.paint.Color.WHITE;
+        }
+        return javafx.scene.paint.Color.BLACK;
+    }
+
+    public boolean checkOverlap(DrawingItem item) {
+        for(DrawingItem i : drawing.getItems()) {
+            if(i.overlaps(item)) {
+                System.out.println("Overlap detected between" + item + " and " + i);
+                return true;
+            }
+        }
+        return false;
     }
 }

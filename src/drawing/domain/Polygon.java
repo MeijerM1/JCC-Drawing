@@ -12,6 +12,7 @@ import java.util.ArrayList;
 public class Polygon extends DrawingItem implements Serializable {
 
     private ArrayList<Point> vertices;
+    private Point anchor;
     private double weight;
 
     public Polygon(ArrayList<Point> vertices, double weight) {
@@ -26,7 +27,7 @@ public class Polygon extends DrawingItem implements Serializable {
 
     @Override
     public boolean insideBoundingBox(Point point) {
-        return false;
+        return (point.getX() >= anchor.getX() && point.getX() <= (anchor.getX() + getWidth()) &&  point.getY() >= anchor.getY() && point.getY() <= (anchor.getY() + getHeight()));
     }
 
     @Override
@@ -57,12 +58,30 @@ public class Polygon extends DrawingItem implements Serializable {
 
     @Override
     public double getWidth() {
-        return 0;
+        double xLow = 0;
+        double xHigh = 0;
+        double yHigh = 0;
+
+        for(Point p : vertices) {
+            if(p.getX() < xLow) { xLow = p.getX(); }
+            if(p.getX() > xHigh) { xHigh = p.getX(); }
+            if(p.getY() > yHigh) { yHigh = p.getY(); }
+        }
+
+        anchor = new Point(xLow, yHigh);
+        return xHigh - xLow;
     }
 
     @Override
     public double getHeight() {
-        return 0;
+        double yLow = 0;
+        double yHigh = 0;
+
+        for(Point p : vertices) {
+            if(p.getY() < yLow) {  yLow = p.getY(); }
+            if(p.getY() > yHigh) { yHigh = p.getY(); }
+        }
+        return yHigh - yLow;
     }
 
     @Override

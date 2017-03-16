@@ -41,7 +41,7 @@ public class Drawing extends DrawingItem implements Serializable {
     }
 
     public List<DrawingItem> getItems() {
-        return Collections.unmodifiableList(items);
+        return observableList;
     }
 
     public void setItems(ArrayList<DrawingItem> items) {
