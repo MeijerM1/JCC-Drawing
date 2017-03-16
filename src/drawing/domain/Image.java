@@ -59,6 +59,11 @@ public class Image extends DrawingItem implements Serializable {
     }
 
     @Override
+    public boolean insideBoundingBox(Point point) {
+        return (point.getX() >= anchor.getX() && point.getX() <= (anchor.getX() + width) &&  point.getY() >= anchor.getY() && point.getY() <= (anchor.getY() + height));
+    }
+
+    @Override
     public String toString() {
         return "Image{" +
                 "file=" + file +

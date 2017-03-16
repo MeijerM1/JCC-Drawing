@@ -22,6 +22,11 @@ public class Polygon extends DrawingItem implements Serializable {
         paintable.paint(this);
     }
 
+    @Override
+    public boolean insideBoundingBox(Point point) {
+        return false;
+    }
+
     public ArrayList<Point> getVertices() {
         return vertices;
     }

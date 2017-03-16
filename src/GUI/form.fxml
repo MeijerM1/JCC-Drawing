@@ -6,13 +6,21 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
+<<<<<<< HEAD
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.persistenceController">
+=======
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.mainController">
+>>>>>>> e10cbddf6624c5201d5b8590e5d2d838f8646e37
    <children>
-      <Pane prefHeight="400.0" prefWidth="600.0">
+      <Pane prefHeight="693.0" prefWidth="1000.0" AnchorPane.bottomAnchor="7.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
-            <HBox prefHeight="26.0" prefWidth="600.0">
+            <HBox prefHeight="32.0" prefWidth="1000.0">
                <children>
+<<<<<<< HEAD
                   <MenuBar minWidth="-Infinity" HBox.hgrow="ALWAYS">
+=======
+                  <MenuBar HBox.hgrow="ALWAYS">
+>>>>>>> e10cbddf6624c5201d5b8590e5d2d838f8646e37
                     <menus>
                       <Menu mnemonicParsing="false" text="File">
                         <items>
@@ -22,7 +30,7 @@
                       </Menu>
                       <Menu mnemonicParsing="false" text="Edit">
                         <items>
-                          <MenuItem mnemonicParsing="false" onAction="#draw" text="Add" />
+                          <MenuItem mnemonicParsing="false" text="Add" />
                               <MenuItem mnemonicParsing="false" text="Remove" />
                         </items>
                       </Menu>
@@ -33,14 +41,12 @@
                       </Menu>
                     </menus>
                      <HBox.margin>
-                        <Insets left="1.0" top="1.0" />
+                        <Insets />
                      </HBox.margin>
-                     <padding>
-                        <Insets left="1.0" right="1.0" />
-                     </padding>
                   </MenuBar>
                </children>
             </HBox>
+<<<<<<< HEAD
             <Canvas fx:id="drawingCanvas" height="383.0" layoutY="25.0" width="607.0" />
             <HBox layoutY="25.0" prefHeight="26.0" prefWidth="600.0" style="-fx-background-color: grey;">
                <children>
@@ -48,8 +54,36 @@
                   <ComboBox prefWidth="150.0" />
                   <Label text="Color:" />
                   <ComboBox prefWidth="150.0" />
+=======
+            <HBox layoutY="25.0" prefHeight="26.0" prefWidth="1000.0" style="-fx-background-color: lightgrey;">
+               <children>
+                  <Label text="Shape:" />
+                  <ComboBox fx:id="shapeCb" prefWidth="150.0" />
+                  <Label text="Color:" />
+                  <ComboBox fx:id="colorCb" prefWidth="150.0" />
+>>>>>>> e10cbddf6624c5201d5b8590e5d2d838f8646e37
                </children>
+               <padding>
+                  <Insets bottom="3.0" left="15.0" top="10.0" />
+               </padding>
             </HBox>
+            <StackPane layoutY="56.0" style="-fx-background-color: white;">
+               <children>
+                  <StackPane minHeight="400.0" minWidth="167.0" prefHeight="642.0" prefWidth="742.0" style="-fx-background-color: grey;">
+                     <children>
+                        <Canvas fx:id="drawingCanvas" height="624.0" width="736.0">
+                           <StackPane.margin>
+                              <Insets />
+                           </StackPane.margin>
+                        </Canvas>
+                     </children>
+                     <StackPane.margin>
+                        <Insets top="5.0" />
+                     </StackPane.margin>
+                  </StackPane>
+               </children>
+            </StackPane>
+            <ListView fx:id="ddrawingItemsListView" layoutX="742.0" layoutY="56.0" prefHeight="642.0" prefWidth="261.0" />
          </children>
       </Pane>
    </children>

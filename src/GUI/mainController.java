@@ -1,9 +1,6 @@
 package GUI;
-import drawing.domain.Color;
-import drawing.domain.Drawing;
-import drawing.domain.Oval;
-import drawing.domain.Point;
-import javafx.JavaFXPaintable;
+import Paintables.JavaFXPaintable;
+import drawing.domain.*;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -14,6 +11,7 @@ import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ComboBox;
+import javafx.scene.control.ListView;
 import javafx.scene.input.MouseEvent;
 import persistence.SerializationMediator;
 import java.net.URL;
@@ -24,6 +22,8 @@ public class mainController implements Initializable {
     @FXML private Canvas drawingCanvas;
     @FXML private ComboBox shapeCb;
     @FXML private ComboBox colorCb;
+    @FXML ListView<DrawingItem> drawingItemsListView;
+
     private GraphicsContext gc ;
     private Drawing drawing;
 
@@ -31,6 +31,7 @@ public class mainController implements Initializable {
     public void initialize(URL location, ResourceBundle resources) {
         gc = drawingCanvas.getGraphicsContext2D();
         drawing = new Drawing();
+        drawingItemsListView.setItems(drawing.itemsToObserve());
 
         ObservableList<String> shapeOptions =
                 FXCollections.observableArrayList(
@@ -48,17 +49,18 @@ public class mainController implements Initializable {
         }
         colorCb.setItems(colorOptions);
 
+
         // This is important, learn this
         drawingCanvas.addEventHandler(MouseEvent.MOUSE_PRESSED,new EventHandler<MouseEvent>(){
 
             @Override
             public void handle(MouseEvent event) {
-                gc.moveTo(event.getX(), event.getY());
+                addShape(new Point(event.getX(), event.getY()));
             }
         });
     }
 
-    public void saySomething(String message) {
+    public void showError(String message) {
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setTitle("Warning");
         alert.setHeaderText("Error");
@@ -71,11 +73,19 @@ public class mainController implements Initializable {
             SerializationMediator sm = new SerializationMediator();
             // draw(sm.load("D01"));
         } catch(Exception e) {
-            saySomething(e.getMessage());
+            showError(e.getMessage());
         }
     }
 
-    private void draw(Point point) {
+    private void addShape(Point point) {
+        Oval oval = new Oval(point, 100, 100, 100, Color.BLACK);
+        drawing.addItem(oval);
+
+        draw();
+    }
+
+    private void draw() {
         //TODO
+        drawing.paintUsing(new JavaFXPaintable(gc));
     }
 }

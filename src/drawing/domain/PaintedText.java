@@ -27,6 +27,11 @@ public class PaintedText extends DrawingItem implements Serializable {
         paintable.paint(this);
     }
 
+    @Override
+    public boolean insideBoundingBox(Point point) {
+        return (point.getX() >= anchor.getX() && point.getX() <= (anchor.getX() + width) &&  point.getY() >= anchor.getY() && point.getY() <= (anchor.getY() + height));
+    }
+
     public String getContent() {
         return content;
     }

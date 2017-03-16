@@ -1,4 +1,4 @@
-package javafx;
+package Paintables;
 
 import drawing.domain.*;
 import javafx.scene.canvas.GraphicsContext;
