@@ -1,5 +1,7 @@
 package drawing.domain;
 
+import javafx.scene.shape.Rectangle;
+
 import java.io.Serializable;
 import java.util.ArrayList;
 
@@ -25,6 +27,11 @@ public class Polygon extends DrawingItem implements Serializable {
     @Override
     public boolean insideBoundingBox(Point point) {
         return false;
+    }
+
+    @Override
+    public Rectangle getBoundingBox() {
+        return null;
     }
 
     public ArrayList<Point> getVertices() {

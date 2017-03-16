@@ -1,5 +1,7 @@
 package drawing.domain;
 
+import javafx.scene.shape.Rectangle;
+
 import java.io.Serializable;
 
 /**
@@ -62,6 +64,11 @@ public class Oval extends DrawingItem implements Serializable {
     public boolean insideBoundingBox(Point point) {
 
         return (point.getX() >= anchor.getX() && point.getX() <= (anchor.getX() + width) &&  point.getY() >= anchor.getY() && point.getY() <= (anchor.getY() + height));
+    }
+
+    @Override
+    public Rectangle getBoundingBox() {
+        return new Rectangle(anchor.getX(), anchor.getY(), width, height);
     }
 
     @Override

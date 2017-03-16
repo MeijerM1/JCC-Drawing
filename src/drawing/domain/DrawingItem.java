@@ -1,6 +1,7 @@
 package drawing.domain;
 
 import java.io.Serializable;
+import javafx.scene.shape.*;
 
 /**
  * Created by max1_ on 14/02/2017.
@@ -37,6 +38,8 @@ public abstract class DrawingItem implements Serializable {
     public abstract void paintUsing(Paintable paintable);
 
     public abstract boolean insideBoundingBox(Point point);
+
+    public abstract Rectangle getBoundingBox();
 
     public boolean overlaps(DrawingItem item) {
         // TODO

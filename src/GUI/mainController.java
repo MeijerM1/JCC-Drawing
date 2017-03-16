@@ -1,6 +1,9 @@
 package GUI;
 import Paintables.JavaFXPaintable;
 import drawing.domain.*;
+import drawing.domain.Color;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -11,6 +14,9 @@ import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.control.*;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.paint.*;
+import javafx.scene.shape.Rectangle;
+
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -75,6 +81,15 @@ public class mainController implements Initializable {
             }
         });
 
+        drawingItemsListView.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<DrawingItem>() {
+
+            @Override
+            public void changed(ObservableValue<? extends DrawingItem> observable, DrawingItem oldValue, DrawingItem newValue) {
+                System.out.println("Item selected: " + newValue);
+                drawBoundingBox(newValue);
+            }
+        });
+
     }
 
     public void showError(String message) {
@@ -113,7 +128,6 @@ public class mainController implements Initializable {
     private void draw() {
         //TODO
         gc.clearRect(0, 0, 1500, 1500);
-
         drawing.paintUsing(new JavaFXPaintable(gc));
     }
 
@@ -126,5 +140,13 @@ public class mainController implements Initializable {
           draw();
         }
 
+    }
+
+    private void drawBoundingBox(DrawingItem item) {
+        draw();
+        Rectangle rect = item.getBoundingBox();
+
+        gc.setStroke(javafx.scene.paint.Color.BLACK);
+        gc.strokeRect(rect.getX(), rect.getY(), rect.getWidth(), rect.getHeight());
     }
 }

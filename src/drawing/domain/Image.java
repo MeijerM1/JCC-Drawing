@@ -1,5 +1,7 @@
 package drawing.domain;
 
+import javafx.scene.shape.Rectangle;
+
 import java.io.File;
 import java.io.Serializable;
 
@@ -61,6 +63,11 @@ public class Image extends DrawingItem implements Serializable {
     @Override
     public boolean insideBoundingBox(Point point) {
         return (point.getX() >= anchor.getX() && point.getX() <= (anchor.getX() + width) &&  point.getY() >= anchor.getY() && point.getY() <= (anchor.getY() + height));
+    }
+
+    @Override
+    public Rectangle getBoundingBox() {
+        return null;
     }
 
     @Override

@@ -1,6 +1,7 @@
 package drawing.domain;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.scene.shape.Rectangle;
 
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -91,5 +92,10 @@ public class Drawing extends DrawingItem implements Serializable {
     @Override
     public boolean insideBoundingBox(Point point) {
         return false;
+    }
+
+    @Override
+    public Rectangle getBoundingBox() {
+        return null;
     }
 }
