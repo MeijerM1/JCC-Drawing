@@ -35,4 +35,11 @@ public abstract class DrawingItem implements Serializable {
     public abstract double getHeight();
 
     public abstract void paintUsing(Paintable paintable);
+
+    public abstract boolean insideBoundingBox(Point point);
+
+    public boolean overlaps(DrawingItem item) {
+        // TODO
+        return false;
+    }
 }

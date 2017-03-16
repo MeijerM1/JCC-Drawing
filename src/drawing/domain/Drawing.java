@@ -17,9 +17,6 @@ public class Drawing extends DrawingItem implements Serializable {
     private ArrayList<DrawingItem> items;
     private ObservableList<DrawingItem> observableList;
 
-    public ObservableList<DrawingItem> itemsToObserve() {
-        return FXCollections.unmodifiableObservableList(observableList);
-    }
 
     public Drawing() {
         items = new ArrayList<>();
@@ -59,14 +56,19 @@ public class Drawing extends DrawingItem implements Serializable {
     }
 
     public boolean addItem(DrawingItem item) {
-        items.add(item);
+        observableList.add(item);
         return true;
     }
 
     public boolean removeItem(DrawingItem item) {
-        items.remove(item);
+        observableList.remove(item);
         return true;
     }
+
+    public ObservableList<DrawingItem> itemsToObserve() {
+        return FXCollections.unmodifiableObservableList(observableList);
+    }
+
 
     public int findItem(DrawingItem item) {
         return items.indexOf(item);
@@ -77,7 +79,7 @@ public class Drawing extends DrawingItem implements Serializable {
     }
 
     public void paintUsing (Paintable paintable) {
-        for (DrawingItem item : items) {
+        for (DrawingItem item : observableList) {
             item.paintUsing(paintable);
         }
     }
