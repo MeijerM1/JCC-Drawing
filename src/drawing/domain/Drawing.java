@@ -55,6 +55,10 @@ public class Drawing extends DrawingItem implements Serializable {
         this.name = name;
     }
 
+    public void removeLastItem() {
+        items.remove(items.size());
+    }
+
     public boolean addItem(DrawingItem item) {
         observableList.add(item);
         return true;
@@ -82,5 +86,10 @@ public class Drawing extends DrawingItem implements Serializable {
         for (DrawingItem item : observableList) {
             item.paintUsing(paintable);
         }
+    }
+
+    @Override
+    public boolean insideBoundingBox(Point point) {
+        return false;
     }
 }
