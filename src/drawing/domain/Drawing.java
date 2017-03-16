@@ -65,6 +65,7 @@ public class Drawing extends DrawingItem implements Serializable {
     }
 
     public boolean removeItem(DrawingItem item) {
+        items.remove(item);
         observableList.remove(item);
         return true;
     }
@@ -72,7 +73,6 @@ public class Drawing extends DrawingItem implements Serializable {
     public ObservableList<DrawingItem> itemsToObserve() {
         return FXCollections.unmodifiableObservableList(observableList);
     }
-
 
     public int findItem(DrawingItem item) {
         return items.indexOf(item);
