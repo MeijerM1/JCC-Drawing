@@ -2,10 +2,9 @@ package Paintables;
 
 import drawing.domain.*;
 import javafx.scene.canvas.GraphicsContext;
-import javafx.scene.paint.*;
 import javafx.scene.paint.Color;
-import javafx.scene.shape.Circle;
-import javafx.scene.shape.Ellipse;
+import javafx.scene.text.Font;
+import javafx.scene.text.Text;
 
 
 /**
@@ -63,7 +62,9 @@ public class JavaFXPaintable implements Paintable {
     @Override
     public void paint(PaintedText text) {
         gc.setStroke(getColor(text));
-        gc.fillText(text.getContent(), text.getAnchor().getX(), text.getAnchor().getY(), text.getWidth());
+        Text measure = new Text(text.getContent());
+        gc.setFont(new Font(text.getWidth() / measure.getLayoutBounds().getWidth() * 10));
+        gc.fillText(text.getContent(), text.getAnchor().getX(), text.getAnchor().getY() + text.getHeight(), text.getWidth());
     }
 
     @Override

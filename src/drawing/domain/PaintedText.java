@@ -36,7 +36,7 @@ public class PaintedText extends DrawingItem implements Serializable {
 
     @Override
     public Rectangle getBoundingBox() {
-        return null;
+        return new Rectangle(anchor.getX(), anchor.getY(), width, height);
     }
 
     public String getContent() {

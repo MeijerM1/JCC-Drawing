@@ -32,7 +32,7 @@ public class Polygon extends DrawingItem implements Serializable {
 
     @Override
     public Rectangle getBoundingBox() {
-        return null;
+        return new Rectangle(anchor.getX(), anchor.getY(), getWidth(), getHeight());
     }
 
     public ArrayList<Point> getVertices() {
@@ -53,7 +53,7 @@ public class Polygon extends DrawingItem implements Serializable {
 
     @Override
     public Point getAnchor() {
-        return null;
+        return anchor;
     }
 
     @Override

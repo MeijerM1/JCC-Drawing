@@ -67,7 +67,7 @@ public class Image extends DrawingItem implements Serializable {
 
     @Override
     public Rectangle getBoundingBox() {
-        return null;
+        return new Rectangle(anchor.getX(), anchor.getY(), width, height);
     }
 
     @Override

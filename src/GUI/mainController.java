@@ -13,10 +13,17 @@ import javafx.fxml.Initializable;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.control.*;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyCodeCombination;
+import javafx.scene.input.KeyCombination;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.shape.Rectangle;
+import javafx.stage.FileChooser;
 
+import java.io.File;
 import java.net.URL;
+import java.util.List;
+import java.util.Optional;
 import java.util.ResourceBundle;
 
 public class mainController implements Initializable {
@@ -52,6 +59,8 @@ public class mainController implements Initializable {
             colorOptions.add(color);
         }
         colorCb.setItems(colorOptions);
+
+
 
         // This is important, learn this
         drawingCanvas.addEventHandler(MouseEvent.MOUSE_PRESSED,new EventHandler<MouseEvent>(){
@@ -89,6 +98,8 @@ public class mainController implements Initializable {
                 drawBoundingBox(newValue);
             }
         });
+
+        deleteButton.setAccelerator(new KeyCodeCombination(KeyCode.DELETE));
     }
 
     public void showError(String message) {
@@ -108,10 +119,23 @@ public class mainController implements Initializable {
                     drawing.addItem(oval);
                     break;
                 case "Text":
-                    //TODO
+                    TextInputDialog textInputDialog = new TextInputDialog("Text");
+                    Optional<String> result = textInputDialog.showAndWait();
+                    if (result.isPresent()) {
+                        PaintedText text = new PaintedText(result.get(), "Arial", point, width, height );
+                        drawing.addItem(text);
+                    }
                     break;
                 case "Image":
-                    //TODO
+                    FileChooser fileChooser = new FileChooser();
+                    fileChooser.setTitle("Select image");
+                    fileChooser.getExtensionFilters().addAll(
+                            new FileChooser.ExtensionFilter("Image Files", "*.png", "*.jpg", "*.gif"));
+                    File file = fileChooser.showOpenDialog(drawingCanvas.getScene().getWindow());
+                    if (file != null) {
+                        Image img = new Image(file, point, width, height);
+                        drawing.addItem(img);
+                    }
                     break;
                 case "Polygon":
                     //TODO
@@ -152,14 +176,21 @@ public class mainController implements Initializable {
 
         switch ((String) shapeCb.getValue()) {
             case "Oval":
-                gc.setStroke(getColor(Color.valueOf((String) colorCb.getValue())));
+                Oval oval = new Oval(point, width, height, 1, Color.valueOf((String) colorCb.getValue()));
+                if(checkOverlap(oval)){
+                    gc.setStroke(javafx.scene.paint.Color.RED);
+                } else {
+                    gc.strokeOval(point.getX(), point.getY(), width, height);
+                }
                 gc.strokeOval(point.getX(), point.getY(), width, height);
                 break;
             case "Text":
-                //TODO
+                gc.setStroke(getColor(Color.valueOf((String) colorCb.getValue())));
+                gc.strokeRect(point.getX(), point.getY(), width, height);
                 break;
             case "Image":
-                //TODO
+                gc.setStroke(getColor(Color.valueOf((String) colorCb.getValue())));
+                gc.strokeRect(point.getX(), point.getY(), width, height);
                 break;
             case "Polygon":
                 //TODO
