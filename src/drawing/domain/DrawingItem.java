@@ -42,9 +42,6 @@ public abstract class DrawingItem implements Serializable {
     public abstract Rectangle getBoundingBox();
 
     public boolean overlaps(DrawingItem item) {
-        return (item.insideBoundingBox(getAnchor()) ||
-                item.insideBoundingBox(new Point(getAnchor().getX() + getWidth(), getAnchor().getY())) ||
-                item.insideBoundingBox(new Point(getAnchor().getX(), getAnchor().getY() - getHeight())) ||
-                item.insideBoundingBox(new Point(getAnchor().getX() + getWidth(), getAnchor().getY() - getHeight())));
+        return(getBoundingBox().getBoundsInParent().intersects(item.getBoundingBox().getBoundsInParent()));
     }
 }
