@@ -41,20 +41,30 @@ public abstract class DrawingItem implements Serializable {
 
     public abstract Rectangle getBoundingBox();
 
+    /**
+     * Checks if this item in overlapping with the given item.
+     * returns true in case of overlap
+     *
+     * @param item the item to check.
+     */
     public boolean overlaps(DrawingItem item) {
-        if(item.insideBoundingBox(getAnchor()) ||
-                item.insideBoundingBox(new Point(getAnchor().getX() + getWidth(), getAnchor().getY())) ||
-                item.insideBoundingBox(new Point(getAnchor().getX(), getAnchor().getY() + getHeight())) ||
-                item.insideBoundingBox(new Point(getAnchor().getX() + getWidth(), getAnchor().getY() + getHeight()))) {
-            return true;
-        }
+        // this items bottom and top coordinates
+        double xBotOr = getAnchor().getX();
+        double xTopOr = getAnchor().getX() + getWidth();
+        double yBotOr = getAnchor().getY();
+        double yTopOr = getAnchor().getY() + getHeight();
 
-        if(this.insideBoundingBox(item.getAnchor()) ||
-                this.insideBoundingBox(new Point(item.getAnchor().getX() + item.getWidth(), item.getAnchor().getY())) ||
-                this.insideBoundingBox(new Point(item.getAnchor().getX(), item.getAnchor().getY() + item.getHeight())) ||
-                this.insideBoundingBox(new Point(item.getAnchor().getX() + item.getWidth(), item.getAnchor().getY() + item.getHeight()))) {
-            return true;
-        }
-        return false;
+        // Comparable item bottom and top coordinates
+        double xBotCom = item.getAnchor().getX();
+        double xTopCom = item.getAnchor().getX() + item.getWidth();
+        double yBotCom = item.getAnchor().getY();
+        double yTopCom = item.getAnchor().getY() + item.getHeight();
+
+        // Check for no intersection instead of intersection itself
+        return !(xTopOr < xBotCom ||
+                xTopCom < xBotOr ||
+                yTopOr < yBotCom ||
+                yTopCom < yBotOr);
     }
+
 }

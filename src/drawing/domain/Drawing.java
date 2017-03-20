@@ -91,7 +91,7 @@ public class Drawing extends DrawingItem implements Serializable {
 
     @Override
     public boolean insideBoundingBox(Point point) {
-        for(DrawingItem i : items) {
+        for(DrawingItem i : observableList) {
             if(i.insideBoundingBox(point)) {
                 return true;
             }

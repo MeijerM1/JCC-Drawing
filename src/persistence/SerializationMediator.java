@@ -40,21 +40,20 @@ public class SerializationMediator implements PersistencyMediator {
     }
 
     @Override
-    public boolean save(Drawing drawing) {
+    public boolean save(Drawing drawing, File file) {
         try {
             // Create a new file to serialise to
             // If the file already exists nothing will happen
-            File outFile = new File(System.getProperty("user.dir") + "\\saves\\" + drawing.getName() + ".ser");
-            outFile.getParentFile().createNewFile();
-            outFile.createNewFile();
-            System.out.println("File at: " +  outFile.getAbsolutePath());
+            file.getParentFile().createNewFile();
+            file.createNewFile();
+            System.out.println("File at: " +  file.getAbsolutePath());
 
-            FileOutputStream fileOut = new FileOutputStream(outFile, false);
+            FileOutputStream fileOut = new FileOutputStream(file, false);
             ObjectOutputStream out = new ObjectOutputStream(fileOut);
             out.writeObject(drawing);
             out.close();
             fileOut.close();
-            System.out.printf("Serialized data is saved in " + outFile.getAbsolutePath());
+            System.out.printf("Serialized data is saved in " + file.getAbsolutePath());
             return true;
         }catch(IOException i) {
             i.printStackTrace();

@@ -27,7 +27,7 @@ public class Polygon extends DrawingItem implements Serializable {
 
     @Override
     public boolean insideBoundingBox(Point point) {
-        return (point.getX() >= anchor.getX() && point.getX() <= (anchor.getX() + getWidth()) &&  point.getY() >= anchor.getY() && point.getY() <= (anchor.getY() + getHeight()));
+        return (anchor.getX() <= point.getX()) && (point.getX() <= (anchor.getX() + getWidth())) && (anchor.getY() <= point.getY()) && (point.getY() <= (anchor.getY() + getHeight()));
     }
 
     @Override

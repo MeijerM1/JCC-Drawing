@@ -3,6 +3,7 @@ package Paintables;
 import drawing.domain.*;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.paint.Color;
+import javafx.scene.paint.Paint;
 import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 
@@ -40,7 +41,9 @@ public class JavaFXPaintable implements Paintable {
         gc.setStroke(getColor(oval));
         gc.strokeOval(oval.getAnchor().getX(), oval.getAnchor().getY(), oval.getWidth(), oval.getHeight());
 
+        gc.setFill(Color.RED);
         gc.fillRect(oval.getAnchor().getX(), oval.getAnchor().getY(), 3, 3);
+        gc.setFill(Color.BLACK);
         gc.fillRect(oval.getAnchor().getX() + oval.getWidth(), oval.getAnchor().getY(), 3, 3);
         gc.fillRect(oval.getAnchor().getX(), oval.getAnchor().getY() + oval.getHeight(), 3, 3);
         gc.fillRect(oval.getAnchor().getX() + oval.getWidth(), oval.getAnchor().getY() + oval.getHeight(), 3, 3);

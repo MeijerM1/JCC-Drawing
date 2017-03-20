@@ -1,7 +1,10 @@
 package persistence;
 
+import com.mysql.jdbc.exceptions.jdbc4.CommunicationsException;
 import drawing.domain.Drawing;
 
+import javax.naming.CommunicationException;
+import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.ObjectInputStream;
@@ -44,7 +47,7 @@ public class DatabaseMediator implements PersistencyMediator {
     }
 
     @Override
-    public boolean save(Drawing drawing) throws SQLException {
+    public boolean save(Drawing drawing, File file) throws SQLException, CommunicationsException {
         String SQL_SERIALIZE_OBJECT = "INSERT INTO drawing(Drawing) VALUES (?)";
 
         init(props);

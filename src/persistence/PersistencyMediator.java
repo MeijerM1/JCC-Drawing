@@ -2,6 +2,7 @@ package persistence;
 
 import drawing.domain.Drawing;
 
+import java.io.File;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.Properties;
@@ -12,6 +13,6 @@ import java.util.Properties;
  */
 public interface PersistencyMediator {
     Drawing load(String nameDrawing) throws SQLException, IOException, ClassNotFoundException;
-    boolean save(Drawing drawing) throws SQLException;
+    boolean save(Drawing drawing, File file) throws SQLException;
     boolean init(Properties props) throws SQLException;
 }

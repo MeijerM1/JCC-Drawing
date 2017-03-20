@@ -18,18 +18,18 @@
                         <items>
                               <Menu mnemonicParsing="false" text="Save">
                                 <items>
-                                  <MenuItem mnemonicParsing="false" text="File.." />
-                                    <MenuItem mnemonicParsing="false" text="Database.." />
+                                  <MenuItem fx:id="fileSave" mnemonicParsing="false" text="File.." />
+                                    <MenuItem fx:id="dbSave" mnemonicParsing="false" text="Database.." />
                                 </items>
                               </Menu>
                               <Menu mnemonicParsing="false" text="Load">
                                 <items>
-                                  <MenuItem mnemonicParsing="false" text="File.." />
-                                    <MenuItem mnemonicParsing="false" text="Database.." />
+                                  <MenuItem fx:id="fileLoad" mnemonicParsing="false" text="File.." />
+                                    <MenuItem fx:id="dbLoad" mnemonicParsing="false" text="Database.." />
                                 </items>
                               </Menu>
                               <SeparatorMenuItem mnemonicParsing="false" text="Test" />
-                          <MenuItem mnemonicParsing="false" text="Close" />
+                          <MenuItem fx:id="close" mnemonicParsing="false" text="Close" />
                         </items>
                       </Menu>
                       <Menu mnemonicParsing="false" text="Edit">

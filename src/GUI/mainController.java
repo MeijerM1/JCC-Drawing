@@ -1,5 +1,6 @@
 package GUI;
 import Paintables.JavaFXPaintable;
+import com.mysql.jdbc.CommunicationsException;
 import drawing.domain.*;
 import drawing.domain.Color;
 import javafx.beans.value.ChangeListener;
@@ -15,14 +16,15 @@ import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.control.*;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyCodeCombination;
-import javafx.scene.input.KeyCombination;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.shape.Rectangle;
 import javafx.stage.FileChooser;
+import persistence.DatabaseMediator;
+import persistence.SerializationMediator;
 
 import java.io.File;
 import java.net.URL;
-import java.util.List;
+import java.sql.SQLException;
 import java.util.Optional;
 import java.util.ResourceBundle;
 
@@ -34,6 +36,10 @@ public class mainController implements Initializable {
     @FXML ListView<DrawingItem> drawingItemsListView;
     @FXML private MenuItem deleteButton;
     @FXML private MenuItem addDrawingButton;
+    @FXML private MenuItem fileSave;
+    @FXML private MenuItem dbSave;
+    @FXML private MenuItem fileLoad;
+    @FXML private MenuItem dbLoad;
     Point startPoint;
 
     private GraphicsContext gc ;
@@ -81,7 +87,7 @@ public class mainController implements Initializable {
         drawingCanvas.addEventHandler(MouseEvent.MOUSE_RELEASED,new EventHandler<MouseEvent>(){
             @Override
             public void handle(MouseEvent event) {
-                if((String) shapeCb.getValue() == "Get intersect") {
+                if(shapeCb.getValue() == "Get intersect") {
                     checkOverlap(new Point(event.getX(), event.getY()));
                 } else {
                     addShape(startPoint, (event.getX() - startPoint.getX()), (event.getY() - startPoint.getY()));
@@ -93,6 +99,41 @@ public class mainController implements Initializable {
         deleteButton.setOnAction(new EventHandler<ActionEvent>() {
             @Override public void handle(ActionEvent e) {
                 deleteItem();
+            }
+        });
+
+        fileLoad.setOnAction(new EventHandler<ActionEvent>() {
+            @Override public void handle(ActionEvent e) {
+                deleteItem();
+            }
+        });
+
+        dbLoad.setOnAction(new EventHandler<ActionEvent>() {
+            @Override public void handle(ActionEvent e) {
+                deleteItem();
+            }
+        });
+
+        fileSave.setOnAction(new EventHandler<ActionEvent>() {
+            @Override public void handle(ActionEvent e) {
+                try {
+                    save("file");
+                } catch (SQLException e1) {
+                    e1.printStackTrace();
+                }
+            }
+        });
+
+        dbSave.setOnAction(new EventHandler<ActionEvent>() {
+            @Override public void handle(ActionEvent e) {
+                try {
+                    save("database");
+                } catch (com.mysql.jdbc.exceptions.jdbc4.CommunicationsException e2) {
+                    e2.printStackTrace();
+                    showError("Can't connect to db. Is your VPN connection up?");
+                } catch (SQLException e1) {
+                    e1.printStackTrace();
+                }
             }
         });
 
@@ -134,7 +175,7 @@ public class mainController implements Initializable {
             switch ((String) shapeCb.getValue()) {
                 case "Oval":
                     Oval oval = new Oval(point, width, height, 100, Color.valueOf((String) colorCb.getValue()));
-                    if(checkOverlap(oval)) { showError("Overlap detected, aborting"); draw(); return; };
+                    if(checkOverlap(oval)) { showError("Overlap detected, aborting"); draw(); return; }
                     drawing.addItem(oval);
                     break;
                 case "Text":
@@ -169,7 +210,6 @@ public class mainController implements Initializable {
     }
 
     private void draw() {
-        //TODO
         gc.clearRect(0, 0, 1500, 1500);
         drawing.paintUsing(new JavaFXPaintable(gc));
     }
@@ -254,5 +294,48 @@ public class mainController implements Initializable {
         }
         System.out.println("Point is not within any items");
         return false;
+    }
+
+    public void save(String type) throws SQLException {
+        if(type == "file") {
+            SerializationMediator sm = new SerializationMediator();
+            FileChooser fileChooser = new FileChooser();
+            fileChooser.setTitle("Save file");
+            fileChooser.setInitialFileName("Test");
+            File selectedFile = fileChooser.showSaveDialog((drawingCanvas.getScene().getWindow()));
+            if (selectedFile != null) {
+                sm.save(drawing, selectedFile);
+            }
+
+        } else if( type == "database") {
+            DatabaseMediator dm = new DatabaseMediator();
+            // Some shitty coding right here
+            // to lazy to fix
+            dm.save(drawing, new File("sdasd"));
+
+        } else {
+            return;
+        }
+    }
+
+    public void load(String type) throws SQLException {
+        if(type == "file") {
+            SerializationMediator sm = new SerializationMediator();
+            FileChooser fileChooser = new FileChooser();
+            fileChooser.setTitle("Save file");
+            File selectedFile = fileChooser.showOpenDialog((drawingCanvas.getScene().getWindow()));
+            if (selectedFile != null) {
+                //sm.load(drawing, selectedFile);
+            }
+
+        } else if( type == "database") {
+            DatabaseMediator dm = new DatabaseMediator();
+            // Some shitty coding right here
+            // to lazy to fix
+            dm.save(drawing, new File("sdasd"));
+
+        } else {
+            return;
+        }
     }
 }
