@@ -39,6 +39,11 @@ public class JavaFXPaintable implements Paintable {
     public void paint(Oval oval) {
         gc.setStroke(getColor(oval));
         gc.strokeOval(oval.getAnchor().getX(), oval.getAnchor().getY(), oval.getWidth(), oval.getHeight());
+
+        gc.fillRect(oval.getAnchor().getX(), oval.getAnchor().getY(), 3, 3);
+        gc.fillRect(oval.getAnchor().getX() + oval.getWidth(), oval.getAnchor().getY(), 3, 3);
+        gc.fillRect(oval.getAnchor().getX(), oval.getAnchor().getY() + oval.getHeight(), 3, 3);
+        gc.fillRect(oval.getAnchor().getX() + oval.getWidth(), oval.getAnchor().getY() + oval.getHeight(), 3, 3);
     }
 
     @Override

@@ -33,6 +33,7 @@ public class mainController implements Initializable {
     @FXML private ComboBox colorCb;
     @FXML ListView<DrawingItem> drawingItemsListView;
     @FXML private MenuItem deleteButton;
+    @FXML private MenuItem addDrawingButton;
     Point startPoint;
 
     private GraphicsContext gc ;
@@ -59,8 +60,6 @@ public class mainController implements Initializable {
             colorOptions.add(color);
         }
         colorCb.setItems(colorOptions);
-
-
 
         // This is important, learn this
         drawingCanvas.addEventHandler(MouseEvent.MOUSE_PRESSED,new EventHandler<MouseEvent>(){
@@ -99,6 +98,20 @@ public class mainController implements Initializable {
             }
         });
 
+        addDrawingButton.setOnAction(new EventHandler<ActionEvent>() {
+            @Override public void handle(ActionEvent e) {
+                Drawing addDrawing = new Drawing();
+                addDrawing.addItem(new Oval(new Point(200, 200), 30, 30, 10, Color.BLUE));
+                addDrawing.addItem(new Oval(new Point(100, 100), 30, 30, 10, Color.BLUE));
+                addDrawing.addItem(new Oval(new Point(300, 300), 30, 30, 10, Color.BLUE));
+                drawing.addItem(addDrawing);
+                draw();
+
+            }
+        });
+
+        // Keyboard shortcuts
+        // Not the right place to put them but ohh well
         deleteButton.setAccelerator(new KeyCodeCombination(KeyCode.DELETE));
     }
 

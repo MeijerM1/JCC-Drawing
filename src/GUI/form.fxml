@@ -6,11 +6,11 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.mainController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="1462.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.mainController">
    <children>
       <Pane layoutX="378.0" layoutY="139.0" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
-            <HBox prefHeight="22.0" prefWidth="1000.0">
+            <HBox prefHeight="32.0" prefWidth="1462.0">
                <children>
                   <MenuBar HBox.hgrow="ALWAYS">
                     <menus>
@@ -34,8 +34,9 @@
                       </Menu>
                       <Menu mnemonicParsing="false" text="Edit">
                         <items>
+                              <MenuItem fx:id="addDrawingButton" mnemonicParsing="false" text="Add drawing" />
                           <MenuItem mnemonicParsing="false" text="Clear" />
-                              <MenuItem mnemonicParsing="false" text="Delete" fx:id="deleteButton" />
+                              <MenuItem fx:id="deleteButton" mnemonicParsing="false" text="Delete" />
                         </items>
                       </Menu>
                       <Menu mnemonicParsing="false" text="Help">
@@ -47,8 +48,8 @@
                   </MenuBar>
                </children>
             </HBox>
-            <ListView fx:id="drawingItemsListView" layoutX="800.0" layoutY="55.0" prefHeight="645.0" prefWidth="200.0" />
-            <HBox layoutY="25.0" prefHeight="30.0" prefWidth="1000.0">
+            <ListView fx:id="drawingItemsListView" layoutX="800.0" layoutY="55.0" prefHeight="645.0" prefWidth="662.0" />
+            <HBox layoutY="25.0" prefHeight="30.0" prefWidth="1462.0">
                <children>
                   <Label text="Shape:">
                      <HBox.margin>
