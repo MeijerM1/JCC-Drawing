@@ -50,7 +50,8 @@ public class mainController implements Initializable {
                         "Image",
                         "Oval",
                         "Text",
-                        "Polygon"
+                        "Polygon",
+                        "Get intersect"
                 );
         shapeCb.setItems(shapeOptions);
 
@@ -72,7 +73,7 @@ public class mainController implements Initializable {
         drawingCanvas.addEventHandler(MouseEvent.MOUSE_DRAGGED,new EventHandler<MouseEvent>(){
             @Override
             public void handle(MouseEvent event) {
-                System.out.println(String.format("Mouse dragged at %f, %f", event.getX(), event.getY()));
+                //System.out.println(String.format("Mouse dragged at %f, %f", event.getX(), event.getY()));
                 draw();
                 drawTempShape(startPoint, (event.getX() - startPoint.getX()), (event.getY() - startPoint.getY()));
             }
@@ -80,7 +81,12 @@ public class mainController implements Initializable {
         drawingCanvas.addEventHandler(MouseEvent.MOUSE_RELEASED,new EventHandler<MouseEvent>(){
             @Override
             public void handle(MouseEvent event) {
-                addShape(startPoint, (event.getX() - startPoint.getX()), (event.getY() - startPoint.getY()));
+                if((String) shapeCb.getValue() == "Get intersect") {
+                    checkOverlap(new Point(event.getX(), event.getY()));
+                } else {
+                    addShape(startPoint, (event.getX() - startPoint.getX()), (event.getY() - startPoint.getY()));
+
+                }
             }
         });
 
@@ -236,6 +242,17 @@ public class mainController implements Initializable {
                 return true;
             }
         }
+        return false;
+    }
+
+    public boolean checkOverlap(Point point) {
+        for(DrawingItem i : drawing.getItems()) {
+            if(i.insideBoundingBox(point)) {
+                System.out.println("Point is withing the bounding box of " + i );
+                return true;
+            }
+        }
+        System.out.println("Point is not within any items");
         return false;
     }
 }

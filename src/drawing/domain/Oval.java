@@ -62,7 +62,7 @@ public class Oval extends DrawingItem implements Serializable {
 
     @Override
     public boolean insideBoundingBox(Point point) {
-        if ((anchor.getX() <= point.getX()) && (point.getX() <= (anchor.getX() + getWidth())) && (anchor.getY() >= point.getY()) && (point.getY() >= (anchor.getY() - getHeight()))) {
+        if ((anchor.getX() <= point.getX()) && (point.getX() <= (anchor.getX() + getWidth())) && (anchor.getY() <= point.getY()) && (point.getY() <= (anchor.getY() + getHeight()))) {
             return true;
         }
         return false;
